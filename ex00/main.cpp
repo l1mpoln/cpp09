@@ -6,7 +6,7 @@
 /*   By: vkuzmin <vkuzmin@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 02:50:05 by vkuzmin           #+#    #+#             */
-/*   Updated: 2023/10/27 06:57:53 by vkuzmin          ###   ########.fr       */
+/*   Updated: 2023/11/02 12:06:18 by vkuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ bool ValidateDate(const std::string& date) {
 
 bool ValidateValue(const double &value) 
 {
-	if (value < 0 || value > 2147483647) 
+	if (value < 0 || value > 1000) 
 	{
 		std::cerr << "Error: Value " << value << " is not a positive number between 0 and 2147483647.\n";
 		return false;

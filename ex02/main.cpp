@@ -6,7 +6,7 @@
 /*   By: vkuzmin <vkuzmin@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 05:22:58 by vkuzmin           #+#    #+#             */
-/*   Updated: 2023/10/28 08:11:55 by vkuzmin          ###   ########.fr       */
+/*   Updated: 2023/11/05 11:03:11 by vkuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void print_before(std::vector<int> &first_vector)
 {
     std::cout << "Before: ";
     
-    for (int num : first_vector)
-        std::cout << num << ' ';
+    for (std::vector<int>::const_iterator it = first_vector.begin(); it != first_vector.end(); ++it) 
+        std::cout << *it << ' ';
     std::cout << std::endl;
 }
 
@@ -28,8 +28,8 @@ void print_clock_vector(std::vector<int> &first_vector)
     clock_t end = clock();
 
     std::cout << "After: ";
-    for (int num : first_vector)
-        std::cout << num << ' ';
+    for (std::vector<int>::const_iterator it = first_vector.begin(); it != first_vector.end(); ++it) 
+        std::cout << *it << ' ';
     std::cout << std::endl;
 
     double microseconds = ((double) (end - start) / CLOCKS_PER_SEC) * 1e6; 
@@ -47,32 +47,32 @@ void print_clock_list(std::list<int> &list)
 
 int main(int argc, char **argv)
 {
-    if (argc != 2)
+    if (argc == 1)
     {
-        std::cout << "Using: ./PmergeMe <string of ints>" << std::endl;
+        std::cout << "Using: ./PmergeMe <ints>" << std::endl;
         return (0); 
     }
 
     std::vector<int> first_vector;
     std::list<int> second_list;
-    std::istringstream ss(argv[1]);
     
-    int num = 0;
-    while (ss >> num)
+    for (int i = 1; i < argc; ++i) 
     {
-        if (num < 0)
+		std::stringstream ss(argv[i]);
+		int num;
+		if (!(ss >> num) || !ss.eof()) 
         {
-            std::cout << "Found negative number => " << num << std::endl;
-            return (0);
-        }
-        first_vector.push_back(num);
-        second_list.push_back(num);
-    }
-    if (!ss.eof())
-    {
-        std::cout << "Error: Invalid input" << std::endl;
-        return (0);
-    }
+			std::cerr << "Error: Invalid input.\n";
+			return 1;
+		}
+		if (num < 0) 
+        {
+			std::cerr << "Error: Negative numbers are not allowed.\n";
+			return 1;
+		}
+		first_vector.push_back(num);
+		second_list.push_back(num);
+	}
     
     print_before(first_vector);
     print_clock_vector(first_vector);

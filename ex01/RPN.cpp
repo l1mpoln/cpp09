@@ -6,7 +6,7 @@
 /*   By: vkuzmin <vkuzmin@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 23:48:12 by vkuzmin           #+#    #+#             */
-/*   Updated: 2023/10/28 05:15:49 by vkuzmin          ###   ########.fr       */
+/*   Updated: 2023/11/05 10:56:10 by vkuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stack>
 #include <sstream>
 #include <iostream>
+#include <cstdlib>
 
 double RPNCalculator::evaluate(std::string expression) {
     std::stack<double> stack;
@@ -23,8 +24,9 @@ double RPNCalculator::evaluate(std::string expression) {
 
     while (iss >> token) 
     {
+        const char *str = token.c_str();
         if (isdigit(token[0])) 
-            stack.push(std::stod(token));
+            stack.push(std::strtod(str, NULL));
         
         else if (token.size() == 1 && (token[0] == '+' || token[0] == '-' || token[0] == '*' || token[0] == '/')) 
         {

@@ -6,7 +6,7 @@
 /*   By: vkuzmin <vkuzmin@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 02:50:05 by vkuzmin           #+#    #+#             */
-/*   Updated: 2023/11/02 12:06:18 by vkuzmin          ###   ########.fr       */
+/*   Updated: 2023/11/05 10:50:46 by vkuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ void get_input(std::string filename, Changer &BitcoinChanger)
 {
 	std::map<std::string, int> input_data;
 	
-	std::ifstream file(filename);
+	std::ifstream file(filename.c_str());
 	if (!file.is_open())
 	{
 		std::cerr << "Cant open a file" << std::endl;
-		exit(0);
+		exit(0) ;
 	}
 	
 	std::string line;

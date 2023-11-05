@@ -6,7 +6,7 @@
 /*   By: vkuzmin <vkuzmin@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 07:34:19 by vkuzmin           #+#    #+#             */
-/*   Updated: 2023/10/28 08:13:52 by vkuzmin          ###   ########.fr       */
+/*   Updated: 2023/11/05 10:58:53 by vkuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,22 +99,24 @@ void insertionSort(std::list<int>& lst)
 {
     for (std::list<int>::iterator it = ++lst.begin(); it != lst.end(); ++it) 
     {
-        int key = *it;  // Запоминаем текущий элемент, который нужно вставить в отсортированную часть
-        std::list<int>::iterator jt = it;  // jt - итератор, смотрящий на элемент перед it
-        --jt;  // Переходим к предыдущему элементу
+        int key = *it;  
+        std::list<int>::iterator jt = it;  
+        --jt;  
 
-        // Пока не достигли начала списка и предыдущий элемент больше key
         while (jt != lst.begin() && *jt > key) 
         {
-            std::list<int>::iterator next_jt = jt;  // next_jt - итератор, смотрящий на предыдущий элемент перед jt
-            --next_jt;  // Переходим к элементу перед jt
-            *std::next(jt) = *jt;  // Перемещаем элемент на следующую позицию
-            jt = next_jt;  // Переходим к предыдущему элементу
+            std::list<int>::iterator next_jt = jt;  
+            --next_jt;  
+            std::advance(jt, 1);  
+            *jt = *next_jt;  
+            jt = next_jt;  
         }
 
-        *std::next(jt) = key;  // Вставляем key в правильную позицию в отсортированной части
+        std::advance(jt, 1);  
+        *jt = key;  
     }
 }
+
 
 
 void mergelist(std::list<int>& lst, std::list<int>& left, std::list<int>& right) 

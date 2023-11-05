@@ -6,12 +6,12 @@
 #    By: vkuzmin <vkuzmin@student.42nice.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/27 23:46:38 by vkuzmin           #+#    #+#              #
-#    Updated: 2023/10/28 05:23:15 by vkuzmin          ###   ########.fr        #
+#    Updated: 2023/11/05 10:56:37 by vkuzmin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = g++
-CFLAGS = -Wall -Wextra -Werror --std=c++11 -fsanitize=address
+CC = c++
+CFLAGS = -Wall -Wextra -Werror --std=c++98 -fsanitize=address
 TARGET = PmergeMe
 SRCS = main.cpp PmergeMe.cpp
 OBJS = $(SRCS:.cpp=.o) 

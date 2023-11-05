@@ -6,17 +6,20 @@
 /*   By: vkuzmin <vkuzmin@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 02:07:00 by vkuzmin           #+#    #+#             */
-/*   Updated: 2023/10/27 06:57:20 by vkuzmin          ###   ########.fr       */
+/*   Updated: 2023/11/05 10:51:12 by vkuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
+# include <cstdlib>
 # include <iostream>
 # include <map>
 # include <fstream>
 # include <sstream>
+# include <string>
+
 
 class Changer
 {

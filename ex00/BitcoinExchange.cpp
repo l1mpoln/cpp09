@@ -6,7 +6,7 @@
 /*   By: vkuzmin <vkuzmin@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 02:06:52 by vkuzmin           #+#    #+#             */
-/*   Updated: 2023/10/27 06:59:53 by vkuzmin          ###   ########.fr       */
+/*   Updated: 2023/11/05 10:53:53 by vkuzmin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 Changer::Changer(std::string filename)
 {
-    std::ifstream file(filename); 
+    std::ifstream file(filename.c_str()); 
     if (!file.is_open())
     {
         std::cerr << "Cant open a file" << std::endl;
-        exit(0);
+        exit(1);
     }
     fill_data(file); 
 }
@@ -48,7 +48,8 @@ void Changer::fill_data(std::ifstream& file)
                 }
                 else if (!isdigit(part2[j]))
                      std::cerr << "Error: Invalid price in data => " << line << std::endl;
-                double price = std::stod(part2);
+                const char *cstr = part2.c_str();
+                double price = std::strtod(cstr, NULL);
                 if (price < 0)
                     std::cerr << "Error: Invalid price in data => " << line << std::endl;
                 data[part1] = price;
